@@ -1,6 +1,7 @@
 package mantenimiento;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelos.Vendedor;
 import modelos.VendedorDAO;
@@ -132,7 +133,15 @@ public final class panelVendedor extends javax.swing.JPanel {
             new String [] {
                 "ID", "Nombre", "Dirección", "Teléfono", "No. Seguro"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tabla.getTableHeader().setReorderingAllowed(false);
         tabla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -150,21 +159,21 @@ public final class panelVendedor extends javax.swing.JPanel {
                 .addComponent(scroll)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(298, 298, 298)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(295, 295, 295)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(labelNombre)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(labelDireccion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(labelTelefono)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtSeguro, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -175,7 +184,7 @@ public final class panelVendedor extends javax.swing.JPanel {
                         .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addContainerGap(294, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,21 +223,53 @@ public final class panelVendedor extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        actualizar();
-        limpiar();
-        listar();
+        int fila = tabla.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "¡Para actualizar debes seleccionar una fila!", "Selecciona para actualizar", JOptionPane.WARNING_MESSAGE);
+        } else if (fila != -1) {
+            if (txtNombre.getText().equals("") || txtDireccion.getText().equals("") || txtTelefono.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "¡Debes rellanar todos los campos!", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+                if (txtNombre.getText().equals("")) {
+                    txtNombre.requestFocus();
+                } else if (txtDireccion.getText().equals("")) {
+                    txtDireccion.requestFocus();
+                } else if (txtTelefono.getText().equals("")) {
+                    txtTelefono.requestFocus();
+                }
+            } else {
+                actualizar();
+                limpiar();
+                listar();
+            }
+        }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        agregar();
-        limpiar();
-        listar();
+        if (txtNombre.getText().equals("") || txtDireccion.getText().equals("") || txtTelefono.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "¡Debes rellanar todos los campos!", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+            if (txtNombre.getText().equals("")) {
+                txtNombre.requestFocus();
+            } else if (txtDireccion.getText().equals("")) {
+                txtDireccion.requestFocus();
+            } else if (txtTelefono.getText().equals("")) {
+                txtTelefono.requestFocus();
+            }
+        } else {
+            agregar();
+            limpiar();
+            listar();
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        eliminar();
-        limpiar();
-        listar();
+        int fila = tabla.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "¡Para eliminar debes seleccionar una fila!", "Selecciona para eliminar", JOptionPane.WARNING_MESSAGE);
+        } else {
+            eliminar();
+            limpiar();
+            listar();
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
@@ -239,19 +280,15 @@ public final class panelVendedor extends javax.swing.JPanel {
 
     private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
         int fila = tabla.getSelectedRow();
-        if (fila == -1) {
-            System.err.println("No has seleccionado la fila");
-        } else {
-            id = Integer.parseInt(tabla.getValueAt(fila, 0).toString());
-            String nombre = tabla.getValueAt(fila, 1).toString();
-            String direccion = tabla.getValueAt(fila, 2).toString();
-            String telefono = tabla.getValueAt(fila, 3).toString();
-            String seguro = tabla.getValueAt(fila, 4).toString();
-            txtNombre.setText(nombre);
-            txtDireccion.setText(direccion);
-            txtTelefono.setText(telefono);
-            txtSeguro.setText(seguro);
-        }
+        id = Integer.parseInt(tabla.getValueAt(fila, 0).toString());
+        String nombre = tabla.getValueAt(fila, 1).toString();
+        String direccion = tabla.getValueAt(fila, 2).toString();
+        String telefono = tabla.getValueAt(fila, 3).toString();
+        String seguro = tabla.getValueAt(fila, 4).toString();
+        txtNombre.setText(nombre);
+        txtDireccion.setText(direccion);
+        txtTelefono.setText(telefono);
+        txtSeguro.setText(seguro);
     }//GEN-LAST:event_tablaMouseClicked
 
     void agregar() {
