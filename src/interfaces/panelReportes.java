@@ -1,25 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfaces;
 
-import mantenimiento.panelCliente;
+import reportes.ReportePanel;
 
 /**
  *
- * @author armando
+ * @author Armando Salazar
  */
 public class panelReportes extends javax.swing.JPanel {
-    panelCliente pc = new panelCliente();
+    ReportePanel rp = new ReportePanel();
 
     /**
      * Creates new form panelMenu
      */
     public panelReportes() {
         initComponents();
-        panelContenedor.add(pc);
+        panelContenedor.add(rp);
     }
 
     /**

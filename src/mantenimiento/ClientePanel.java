@@ -1,43 +1,49 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package mantenimiento;
 
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelos.Producto;
-import modelos.ProductoDAO;
+import modelos.Cliente;
+import modelos.ClienteDAO;
 
 /**
  *
- * @author Armando Salazar
+ * @author armando
  */
-public final class panelProducto extends javax.swing.JPanel {
+public class ClientePanel extends javax.swing.JPanel {
 
-    Producto producto = new Producto();
-    ProductoDAO productoDAO = new ProductoDAO();
+    Cliente cliente = new Cliente();
+    ClienteDAO clienteDAO = new ClienteDAO();
     DefaultTableModel modelo = new DefaultTableModel();
     int id;
 
     /**
      * Creates new form panelCliente
      */
-    public panelProducto() {
+    public ClientePanel() {
         initComponents();
         listar();
     }
 
     void listar() {
-        List<Producto> lista = productoDAO.listar();
+        List<Cliente> lista = clienteDAO.listar();
         modelo = (DefaultTableModel) tabla.getModel();
-        Object[] o = new Object[8];
+        Object[] o = new Object[9];
         for (int i = 0; i < lista.size(); i++) {
             o[0] = lista.get(i).getId();
-            o[1] = lista.get(i).getProducto();
-            o[2] = lista.get(i).getPrecio();
-            o[3] = lista.get(i).getUtilidad();
-            o[4] = lista.get(i).getCantidad();
-            o[5] = lista.get(i).getProvedor();
-            o[6] = lista.get(i).getStock();
-            o[7] = lista.get(i).getCodigo();
+            o[1] = lista.get(i).getNombre();
+            o[2] = lista.get(i).getRfc();
+            o[3] = lista.get(i).getDireccion();
+            o[4] = lista.get(i).getTelefono();
+            o[5] = lista.get(i).getColonia();
+            o[6] = lista.get(i).getCp();
+            o[7] = lista.get(i).getCiudad();
+            o[8] = lista.get(i).getCorreo();
             modelo.addRow(o);
         }
         tabla.setModel(modelo);
@@ -53,19 +59,21 @@ public final class panelProducto extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        txtProducto = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtPrecio = new javax.swing.JTextField();
+        txtRFC = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtUtilidad = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtCantidad = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtProvedor = new javax.swing.JTextField();
+        txtColonia = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtStock = new javax.swing.JTextField();
+        txtCP = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
+        txtCiudad = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtCorreo = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
@@ -77,45 +85,51 @@ public final class panelProducto extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 44));
-        jLabel1.setText("Producto:");
+        jLabel1.setText("Nombre:");
 
-        txtProducto.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 44));
-        jLabel2.setText("Precio neto:");
+        jLabel2.setText("RFC:");
 
-        txtPrecio.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        txtRFC.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 0, 44));
-        jLabel3.setText("Utilidad:");
+        jLabel3.setText("Dirección:");
 
-        txtUtilidad.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        txtDireccion.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 0, 44));
-        jLabel4.setText("Cantidad:");
+        jLabel4.setText("Teléfono:");
 
-        txtCantidad.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        txtTelefono.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 0, 44));
-        jLabel5.setText("Provedor:");
+        jLabel5.setText("Colonia:");
 
-        txtProvedor.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        txtColonia.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 0, 44));
-        jLabel6.setText("Stock:");
+        jLabel6.setText("C.P:");
 
-        txtStock.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        txtCP.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 0, 44));
-        jLabel7.setText("Código:");
+        jLabel7.setText("Ciudad:");
 
-        txtCodigo.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        txtCiudad.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 0, 44));
+        jLabel8.setText("Correo electrónico:");
+
+        txtCorreo.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         btnAgregar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         btnAgregar.setText("Agregar");
@@ -146,6 +160,7 @@ public final class panelProducto extends javax.swing.JPanel {
 
         btnNuevo.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         btnNuevo.setText("Nuevo");
+        btnNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoActionPerformed(evt);
@@ -157,18 +172,17 @@ public final class panelProducto extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Producto", "Precio neto", "Utilidad", "Cantidad", "Provedor", "Stock", "Código"
+                "ID", "Nombre", "RFC", "Dirección", "Teléfono", "Colonia", "C.P.", "Ciudad", "Correo electrónico"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tabla.getTableHeader().setReorderingAllowed(false);
         tabla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaMouseClicked(evt);
@@ -185,36 +199,40 @@ public final class panelProducto extends javax.swing.JPanel {
                 .addComponent(scroll)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(273, 273, 273)
+                .addGap(219, 219, 219)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(txtRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtUtilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtProvedor, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtColonia, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCP, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -232,32 +250,36 @@ public final class panelProducto extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(txtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(txtUtilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(txtProvedor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtColonia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(44, 44, 44))
+                            .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnAgregar)
                         .addGap(42, 42, 42)
@@ -277,22 +299,24 @@ public final class panelProducto extends javax.swing.JPanel {
         if (fila == -1) {
             JOptionPane.showMessageDialog(this, "¡Para actualizar debes seleccionar una fila!", "Selecciona para actualizar", JOptionPane.WARNING_MESSAGE);
         } else if (fila != -1) {
-            if (txtProducto.getText().equals("") || txtPrecio.getText().equals("") || txtUtilidad.getText().equals("") || txtCantidad.getText().equals("") || txtProvedor.getText().equals("") || txtStock.getText().equals("") || txtCodigo.getText().equals("")) {
+            if (txtNombre.getText().equals("") || txtRFC.getText().equals("") || txtDireccion.getText().equals("") || txtTelefono.getText().equals("") || txtColonia.getText().equals("") || txtCP.getText().equals("") || txtCiudad.getText().equals("") || txtCorreo.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "¡Debes rellanar todos los campos!", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-                if (txtProducto.getText().equals("")) {
-                    txtProducto.requestFocus();
-                } else if (txtPrecio.getText().equals("")) {
-                    txtPrecio.requestFocus();
-                } else if (txtUtilidad.getText().equals("")) {
-                    txtUtilidad.requestFocus();
-                } else if (txtCantidad.getText().equals("")) {
-                    txtCantidad.requestFocus();
-                } else if (txtProvedor.getText().equals("")) {
-                    txtProvedor.requestFocus();
-                } else if (txtStock.getText().equals("")) {
-                    txtStock.requestFocus();
-                } else if (txtCodigo.getText().equals("")) {
-                    txtCodigo.requestFocus();
+                if (txtNombre.getText().equals("")) {
+                    txtNombre.requestFocus();
+                } else if (txtRFC.getText().equals("")) {
+                    txtRFC.requestFocus();
+                } else if (txtDireccion.getText().equals("")) {
+                    txtDireccion.requestFocus();
+                } else if (txtTelefono.getText().equals("")) {
+                    txtTelefono.requestFocus();
+                } else if (txtColonia.getText().equals("")) {
+                    txtColonia.requestFocus();
+                } else if (txtCP.getText().equals("")) {
+                    txtCP.requestFocus();
+                } else if (txtCiudad.getText().equals("")) {
+                    txtCiudad.requestFocus();
+                } else if (txtCorreo.getText().equals("")) {
+                    txtCorreo.requestFocus();
                 }
             } else {
                 actualizar();
@@ -303,22 +327,24 @@ public final class panelProducto extends javax.swing.JPanel {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        if (txtProducto.getText().equals("") || txtPrecio.getText().equals("") || txtUtilidad.getText().equals("") || txtCantidad.getText().equals("") || txtProvedor.getText().equals("") || txtStock.getText().equals("") || txtCodigo.getText().equals("")) {
+        if (txtNombre.getText().equals("") || txtRFC.getText().equals("") || txtDireccion.getText().equals("") || txtTelefono.getText().equals("") || txtColonia.getText().equals("") || txtCP.getText().equals("") || txtCiudad.getText().equals("") || txtCorreo.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "¡Debes rellanar todos los campos!", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-            if (txtProducto.getText().equals("")) {
-                txtProducto.requestFocus();
-            } else if (txtPrecio.getText().equals("")) {
-                txtPrecio.requestFocus();
-            } else if (txtUtilidad.getText().equals("")) {
-                txtUtilidad.requestFocus();
-            } else if (txtCantidad.getText().equals("")) {
-                txtCantidad.requestFocus();
-            } else if (txtProvedor.getText().equals("")) {
-                txtProvedor.requestFocus();
-            } else if (txtStock.getText().equals("")) {
-                txtStock.requestFocus();
-            } else if (txtCodigo.getText().equals("")) {
-                txtCodigo.requestFocus();
+            if (txtNombre.getText().equals("")) {
+                txtNombre.requestFocus();
+            } else if (txtRFC.getText().equals("")) {
+                txtRFC.requestFocus();
+            } else if (txtDireccion.getText().equals("")) {
+                txtDireccion.requestFocus();
+            } else if (txtTelefono.getText().equals("")) {
+                txtTelefono.requestFocus();
+            } else if (txtColonia.getText().equals("")) {
+                txtColonia.requestFocus();
+            } else if (txtCP.getText().equals("")) {
+                txtCP.requestFocus();
+            } else if (txtCiudad.getText().equals("")) {
+                txtCiudad.requestFocus();
+            } else if (txtCorreo.getText().equals("")) {
+                txtCorreo.requestFocus();
             }
         } else {
             agregar();
@@ -348,83 +374,82 @@ public final class panelProducto extends javax.swing.JPanel {
         int fila = tabla.getSelectedRow();
         id = Integer.parseInt(tabla.getValueAt(fila, 0).toString());
         String nombre = tabla.getValueAt(fila, 1).toString();
-        String precio = tabla.getValueAt(fila, 2).toString();
-        String utilidad = tabla.getValueAt(fila, 3).toString();
-        String cantidad = tabla.getValueAt(fila, 4).toString();
-        String provedor = tabla.getValueAt(fila, 5).toString();
-        String stock = tabla.getValueAt(fila, 6).toString();
-        String codigo = tabla.getValueAt(fila, 7).toString();
-        txtProducto.setText(nombre);
-        txtPrecio.setText(precio);
-        txtUtilidad.setText(utilidad);
-        txtCantidad.setText(cantidad);
-        txtProvedor.setText(provedor);
-        txtStock.setText(stock);
-        txtCodigo.setText(codigo);
+        String rfc = tabla.getValueAt(fila, 2).toString();
+        String direccion = tabla.getValueAt(fila, 3).toString();
+        String telefono = tabla.getValueAt(fila, 4).toString();
+        String colonia = tabla.getValueAt(fila, 5).toString();
+        String cp = tabla.getValueAt(fila, 6).toString();
+        String ciudad = tabla.getValueAt(fila, 7).toString();
+        String correo = tabla.getValueAt(fila, 8).toString();
+        txtNombre.setText(nombre);
+        txtRFC.setText(rfc);
+        txtDireccion.setText(direccion);
+        txtTelefono.setText(telefono);
+        txtColonia.setText(colonia);
+        txtCP.setText(cp);
+        txtCiudad.setText(ciudad);
+        txtCorreo.setText(correo);
     }//GEN-LAST:event_tablaMouseClicked
 
     void agregar() {
-        try {
-            String nombre = txtProducto.getText();
-            double precio = Double.parseDouble(txtPrecio.getText());
-            double utilidad = Double.parseDouble(txtUtilidad.getText());
-            int cantidad = Integer.parseInt(txtCantidad.getText());
-            String provedor = txtProvedor.getText();
-            int stock = Integer.parseInt(txtStock.getText());
-            String codigo = txtCodigo.getText();
-            Object[] o = new Object[7];
-            o[0] = nombre;
-            o[1] = precio;
-            o[2] = utilidad;
-            o[3] = cantidad;
-            o[4] = provedor;
-            o[5] = stock;
-            o[6] = codigo;
-            productoDAO.agregar(o);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "¡Introduciste un dato incorrecto!", "Error dato incorrecto", JOptionPane.ERROR_MESSAGE);
-        }
+        String nombre = txtNombre.getText();
+        String rfc = txtRFC.getText();
+        String direccion = txtDireccion.getText();
+        String telefono = txtTelefono.getText();
+        String colonia = txtColonia.getText();
+        String cp = txtCP.getText();
+        String ciudad = txtCiudad.getText();
+        String correo = txtCorreo.getText();
+        Object[] o = new Object[8];
+        o[0] = nombre;
+        o[1] = rfc;
+        o[2] = direccion;
+        o[3] = telefono;
+        o[4] = colonia;
+        o[5] = cp;
+        o[6] = ciudad;
+        o[7] = correo;
+        clienteDAO.agregar(o);
     }
 
     void actualizar() {
-        try {
-            String nombre = txtProducto.getText();
-            double precio = Double.parseDouble(txtPrecio.getText());
-            double utilidad = Double.parseDouble(txtUtilidad.getText());
-            int cantidad = Integer.parseInt(txtCantidad.getText());
-            String provedor = txtProvedor.getText();
-            int stock = Integer.parseInt(txtStock.getText());
-            String codigo = txtCodigo.getText();
-            Object[] o = new Object[8];
-            o[0] = nombre;
-            o[1] = precio;
-            o[2] = utilidad;
-            o[3] = cantidad;
-            o[4] = provedor;
-            o[5] = stock;
-            o[6] = codigo;
-            o[7] = id;
-            productoDAO.actualizar(o);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "¡Introduciste un dato incorrecto!", "Error dato incorrecto", JOptionPane.ERROR_MESSAGE);
-        }
+        String nombre = txtNombre.getText();
+        String rfc = txtRFC.getText();
+        String direccion = txtDireccion.getText();
+        String telefono = txtTelefono.getText();
+        String colonia = txtColonia.getText();
+        String cp = txtCP.getText();
+        String ciudad = txtCiudad.getText();
+        String correo = txtCorreo.getText();
+        Object[] o = new Object[9];
+        o[0] = nombre;
+        o[1] = rfc;
+        o[2] = direccion;
+        o[3] = telefono;
+        o[4] = colonia;
+        o[5] = cp;
+        o[6] = ciudad;
+        o[7] = correo;
+        o[8] = id;
+        clienteDAO.actualizar(o);
     }
 
     void eliminar() {
         int fila = tabla.getSelectedRow();
         int id = Integer.parseInt(tabla.getValueAt(fila, 0).toString());
-        productoDAO.eliminar(id);
+        clienteDAO.eliminar(id);
     }
 
     void nuevo() {
-        txtProducto.setText("");
-        txtPrecio.setText("");
-        txtUtilidad.setText("");
-        txtCantidad.setText("");
-        txtProvedor.setText("");
-        txtStock.setText("");
-        txtCodigo.setText("");
-        txtProducto.requestFocus();
+        txtNombre.setText("");
+        txtRFC.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        txtColonia.setText("");
+        txtCP.setText("");
+        txtCiudad.setText("");
+        txtCorreo.setText("");
+        txtNombre.requestFocus();
     }
 
     void limpiar() {
@@ -433,7 +458,6 @@ public final class panelProducto extends javax.swing.JPanel {
             i = i - 1;
         }
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
@@ -446,14 +470,16 @@ public final class panelProducto extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane scroll;
     private javax.swing.JTable tabla;
-    private javax.swing.JTextField txtCantidad;
-    private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtPrecio;
-    private javax.swing.JTextField txtProducto;
-    private javax.swing.JTextField txtProvedor;
-    private javax.swing.JTextField txtStock;
-    private javax.swing.JTextField txtUtilidad;
+    private javax.swing.JTextField txtCP;
+    private javax.swing.JTextField txtCiudad;
+    private javax.swing.JTextField txtColonia;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtRFC;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

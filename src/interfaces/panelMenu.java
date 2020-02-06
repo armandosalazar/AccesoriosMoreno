@@ -1,13 +1,13 @@
 package interfaces;
 
-import menu.panelHome;
+import menu.MenuPanel;
 
 /**
  *
  * @author Armando Salazar
  */
 public class panelMenu extends javax.swing.JPanel {
-    panelHome ph = new panelHome();
+    MenuPanel ph = new MenuPanel();
 
     /**
      * Creates new form panelMenu

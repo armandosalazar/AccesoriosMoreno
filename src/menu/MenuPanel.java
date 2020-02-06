@@ -4,12 +4,12 @@ package menu;
  *
  * @author Armando Salazar
  */
-public class panelHome extends javax.swing.JPanel {
+public class MenuPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form panelCliente
      */
-    public panelHome() {
+    public MenuPanel() {
         initComponents();
     }
 
@@ -26,24 +26,24 @@ public class panelHome extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 217, 0));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tiendaIcono.png"))); // NOI18N
-        jLabel1.setText("VENTAS");
+        jLabel1.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        jLabel1.setText("MENÚ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(661, Short.MAX_VALUE))
+                .addGap(396, 396, 396)
+                .addComponent(jLabel1)
+                .addContainerGap(574, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(109, 109, 109)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1)
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addContainerGap(545, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

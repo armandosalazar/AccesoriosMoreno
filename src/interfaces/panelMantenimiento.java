@@ -5,18 +5,18 @@
  */
 package interfaces;
 
-import mantenimiento.panelCliente;
-import mantenimiento.panelProducto;
-import mantenimiento.panelVendedor;
+import mantenimiento.ClientePanel;
+import mantenimiento.ProductoPanel;
+import mantenimiento.VendedorPanel;
 
 /**
  *
  * @author armando
  */
 public class panelMantenimiento extends javax.swing.JPanel {
-    panelCliente pc = new panelCliente();
-    panelProducto pp = new panelProducto();
-    panelVendedor pv = new panelVendedor();
+    ClientePanel pc = new ClientePanel();
+    ProductoPanel pp = new ProductoPanel();
+    VendedorPanel pv = new VendedorPanel();
 
     /**
      * Creates new form panelMenu
