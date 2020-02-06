@@ -17,7 +17,6 @@ public class VendedorDAO implements CRUD {
     private ResultSet resultado;
     private final Conexion conexion = new Conexion();
     private Connection acceso;
-    Vendedor vendedor = new Vendedor();
 
     @Override
     public List listar() {

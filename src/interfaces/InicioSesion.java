@@ -27,7 +27,7 @@ public class InicioSesion extends javax.swing.JFrame {
         claveTXT.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(new Color(255, 0, 44), 2), BorderFactory.createEmptyBorder(0, 10, 0, 10)));
         claveTXT.setEchoChar('●');
         usuarioTXT.setText("Accesorios Moreno");
-        claveTXT.setText("12345");
+        claveTXT.setText("morenoaccesorios");
     }
 
     /**

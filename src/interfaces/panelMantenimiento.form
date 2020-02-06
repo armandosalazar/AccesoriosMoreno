@@ -45,7 +45,7 @@
                   <Component id="btnVendedor" min="-2" pref="141" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="269" max="32767" attributes="0"/>
+                  <EmptySpace pref="261" max="32767" attributes="0"/>
               </Group>
               <Component id="panelContenedor" alignment="0" max="32767" attributes="0"/>
           </Group>
@@ -82,7 +82,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/imagenes/uiR.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="MANTENIMIENTO"/>
+            <Property name="text" type="java.lang.String" value=" MANTENIMIENTO"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnCliente">

@@ -1,25 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfaces;
 
-import mantenimiento.panelCliente;
+import menu.panelHome;
 
 /**
  *
- * @author armando
+ * @author Armando Salazar
  */
 public class panelMenu extends javax.swing.JPanel {
-    panelCliente pc = new panelCliente();
+    panelHome ph = new panelHome();
 
     /**
      * Creates new form panelMenu
      */
     public panelMenu() {
         initComponents();
-        panelContenedor.add(pc);
+        panelContenedor.add(ph);
     }
 
     /**
@@ -42,8 +37,8 @@ public class panelMenu extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 44));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/uiR.png"))); // NOI18N
-        jLabel1.setText("MENÚ");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuR.png"))); // NOI18N
+        jLabel1.setText(" MENÚ");
 
         jButton1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 0, 4));
@@ -85,7 +80,7 @@ public class panelMenu extends javax.swing.JPanel {
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addContainerGap(440, Short.MAX_VALUE))
+                .addContainerGap(432, Short.MAX_VALUE))
             .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(

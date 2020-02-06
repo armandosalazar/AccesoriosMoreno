@@ -45,7 +45,7 @@
                   <Component id="jButton5" min="-2" pref="141" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="418" max="32767" attributes="0"/>
+                  <EmptySpace pref="410" max="32767" attributes="0"/>
               </Group>
               <Component id="panelContenedor" alignment="0" max="32767" attributes="0"/>
           </Group>
@@ -80,9 +80,9 @@
               <Color blue="2c" green="0" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/uiR.png"/>
+              <Image iconType="3" name="/imagenes/tiendaR.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="VENTAS"/>
+            <Property name="text" type="java.lang.String" value=" VENTAS"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">

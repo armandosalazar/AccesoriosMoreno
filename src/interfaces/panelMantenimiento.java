@@ -50,7 +50,7 @@ public class panelMantenimiento extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 44));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/uiR.png"))); // NOI18N
-        jLabel1.setText("MANTENIMIENTO");
+        jLabel1.setText(" MANTENIMIENTO");
 
         btnCliente.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         btnCliente.setForeground(new java.awt.Color(255, 0, 4));
@@ -109,7 +109,7 @@ public class panelMantenimiento extends javax.swing.JPanel {
                 .addComponent(btnVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addContainerGap(261, Short.MAX_VALUE))
             .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
