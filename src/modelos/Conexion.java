@@ -10,7 +10,7 @@ import java.sql.SQLException;
  */
 public class Conexion {
 
-    private final String url = "C:/sqlite/BaseDatos/database.db";
+    private final String url = "/Users/armando/DATABASE/database.db";
     private Connection conexion;
 
     public Connection conectar() {
