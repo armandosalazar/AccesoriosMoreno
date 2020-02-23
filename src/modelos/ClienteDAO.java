@@ -18,6 +18,25 @@ public class ClienteDAO implements CRUD {
     private final Conexion conexion = new Conexion();
     private Connection acceso;
 
+    public Cliente listarID(String nombre) {
+        Cliente cliente = new Cliente();
+        String sql = "SELECT * FROM Cliente WHERE Nombre = ?";
+        try {
+            acceso = conexion.conectar();
+            st = acceso.prepareStatement(sql);
+            st.setString(1, nombre);
+            resultado = st.executeQuery();
+            while (resultado.next()) {                
+                cliente.setId(resultado.getInt(1));
+                cliente.setNombre(resultado.getString(2));
+                cliente.setRfc(resultado.getString(3));
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return cliente;
+    }
+    
     @Override
     public List listar() {
         List<Cliente> lista = new ArrayList<>();
